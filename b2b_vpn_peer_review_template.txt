@@ -1,0 +1,69 @@
+Row ID: {{ID}}
+B2B VPN Peer Review Output for {{CUSTOMER_NAME}}
+Customer Contact Info: {{CUSTOMER_CONTACT}}
+ 
+------------------------  VPN General Details  -----------------------
+VPN Topology: {{VPN_TOPOLOGY}}
+
+
+{%- if VPN_TOPOLOGY == "Single-Homed" %}
+
+VPNGW 1.1.1.1
+      1.1.1.1 Peering with Customer VPNGW {{CUST_VPN_GW_1}}
+
+{%- if CUST_VPN_GW_2 is defined%}
+      1.1.1.2 Peering with Customer VPNGW {{CUST_VPN_GW_2}}
+{% endif %}
+{%- endif %}
+
+{%- if VPN_TOPOLOGY == "Multi-Homed" %}
+HOST VPNGW 1.1.1.1
+         1.1.1.1 Peering with Customer VPNGW {{CUST_VPN_GW_1}}
+{%- if CUST_VPN_GW_2 is defined %}
+         1.1.1.1 Peering with Customer VPNGW {{CUST_VPN_GW_2}}
+HOST VPNGW 1.1.1.2
+         1.1.1.2 Peering with Customer VPNGW {{CUST_VPN_GW_1}}
+{%- if CUST_VPN_GW_2 is defined %}
+         1.1.1.2 Peering with Customer VPNGW {{CUST_VPN_GW_2}}
+{%- endif %}
+{%- endif %}
+{%- endif %}
+
+ASA VPN Sequence Number: {{VPN_SEQ_NUMBER}}
+Phase 1 Protocol: {{VPN_PHASE1}}
+Phase 2 Protocol: {{VPN_PHASE2}}
+Pre-Shared Key: {{VPN_PSK}}
+
+------------------------  VPN Traffic Details  -----------------------
+Interesting Networks
+{{HOST_INTERESTING_CIDR_1}}  <-------->   {{CUST_INTERESTING_CIDR_1}}
+{%- if CUST_INTERESTING_CIDR_2 is defined %}
+{{HOST_INTERESTING_CIDR_2}}  <-------->   {{CUST_INTERESTING_CIDR_2}}
+{%- endif %}
+{%- if CUST_INTERESTING_CIDR_3 is defined %}
+{{HOST_INTERESTING_CIDR_3}}  <-------->   {{CUST_INTERESTING_CIDR_3}}
+{%- endif %}
+
+{%- if CUST_INTERESTING_CIDR_4 is defined %}
+{{HOST_INTERESTING_CIDR_4}}  <-------->   {{CUST_INTERESTING_CIDR_4}}
+{%- endif %}
+
+{%- if CUST_INTERESTING_CIDR_5 is defined %}
+{{HOST_INTERESTING_CIDR_5}}  <-------->   {{CUST_INTERESTING_CIDR_5}}
+{%- endif %}
+{%- if CUST_INTERESTING_CIDR_6 is defined %}
+{{HOST_INTERESTING_CIDR_6}}  <-------->   {{CUST_INTERESTING_CIDR_6}}
+{%- endif %}
+{%- if CUST_INTERESTING_CIDR_7 is defined %}
+{{HOST_INTERESTING_CIDR_7}}  <-------->   {{CUST_INTERESTING_CIDR_7}}
+{%- endif %}
+{%- if CUST_INTERESTING_CIDR_8 is defined %}
+{{HOST_INTERESTING_CIDR_8}}  <-------->   {{CUST_INTERESTING_CIDR_8}}
+{%- endif %}
+{%- if CUST_INTERESTING_CIDR_9 is defined %}
+{{HOST_INTERESTING_CIDR_9}}  <-------->   {{CUST_INTERESTING_CIDR_9}}
+{%- endif %}
+{%- if CUST_INTERESTING_CIDR_10 is defined %}
+{{HOST_INTERESTING_CIDR_10}}  <-------->   {{CUST_INTERESTING_CIDR_10}}
+{%- endif %}
+ 
